@@ -15,7 +15,7 @@ int main(){
     printf("Digite a sua altura em metros: \n");
     scanf("%f", &altura);
     ano = 2021 - idade;
-    printf("Seu nome é: %s \n", nome);
+    printf("Seu nome eh: %s \n", nome);
     printf("Voce tem %d anos\n", idade);
     printf("Nasceu em %d \n", ano);
     printf("E tem altura de %.2f \n", altura);
