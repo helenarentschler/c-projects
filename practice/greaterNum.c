@@ -12,6 +12,6 @@ int max(int num1, int num2){
 }
 
 int main(){
-	printf("%d", max(40, 10) );
+	printf("%d", max(40, 40) );
 	return 0;
 }
