@@ -15,5 +15,10 @@ int max(int num1, int num2, int num3){
 
 int main(){
 	printf("%d", max(40, 70, 80) );
+	if (!(3 == 8 || 7 > 19)){
+		printf("\ntrue");
+	} else {
+		printf("\nfalse");
+	}
 	return 0;
 }
