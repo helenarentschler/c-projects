@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Projetos {
+struct Projetos{
 	int codigo, ano, status;
-	char titulo[30], chave[40], desc[60], autores[60], inst[30], gerenteN[20], gerenteS[20] ;
+	char titulo[30], chave[40], desc[60], autores[60], inst[30], gerenteN[20], gerenteS[20];
 };
 
-void cadastrar(){
+void cadastrar(struct Projetos projeto[], size_t len){
 	int i = 1, j, code, proc;
 	char op = 's';
-	printf ("Cadastro de projetos\n");
-	printf ("Informe as seguintes informacoes do projeto: \n");
+	printf ("\nCadastro de projetos\n");
+	printf ("\nInforme as seguintes informacoes do projeto: \n");
 	while (i <= 200 && op == 's') {
 		j = 1;
 		proc = 0;
-		printf("Codigo: ");
+		printf("\nCodigo: ");
 		scanf("%d", &code); 
 		while (j <= 200 && proc == 0){
 			if (code == projeto[j].codigo){
@@ -51,26 +51,14 @@ void cadastrar(){
 	}
 }
 
-void imprimirInfos(){
-	int i;
-	printf("\nCodigo: %d\n", projeto[i].codigo);
-	printf("Titulo: %s\n", projeto[i].titulo);
-	printf("Palavras-chave: %s\n", projeto[i].chave);
-	printf("Descricao: %s\n", projeto[i].desc);
-	printf("Autores: %s\n", projeto[i].autores);
-	printf("Instituicao: %s\n", projeto[i].inst);
-	printf("Ano: %d\n", &projeto[i].ano);
-	printf("Gerente Responsavel: %s%s\n", projeto[i].gerenteN, projeto[i].gerenteS);
-}
-
-void pesquisarProjeto(){
+void pesquisarProjeto(struct Projetos projeto[], size_t len){
 	int i = 1, j, proc;
-	char code = 0, op = 's';
-	printf("Pesquisa por projeto cadastrado\n");
+	char code, op = 's';
+	printf("\nPesquisa por projeto cadastrado\n");
 	do {
 		j = 1;
 		proc = 0;
-		printf("Insira o codigo do projeto: ");
+		printf("\nInsira o codigo do projeto: ");
 		scanf("%d", &code);
 		while (j <= 200 && proc == 0){
 			if (code == projeto[j].codigo){
@@ -82,7 +70,14 @@ void pesquisarProjeto(){
 		if (proc == 0){
 			printf("Projeto nao cadastrado!\n");
 		} else {
-			imprimirInfos();
+			printf("\nCodigo: %d\n", projeto[i].codigo);
+			printf("Titulo: %s\n", projeto[i].titulo);
+			printf("Palavras-chave: %s\n", projeto[i].chave);
+			printf("Descricao: %s\n", projeto[i].desc);
+			printf("Autores: %s\n", projeto[i].autores);
+			printf("Instituicao: %s\n", projeto[i].inst);
+			printf("Ano: %d\n", &projeto[i].ano);
+			printf("Gerente Responsavel: %s%s\n", projeto[i].gerenteN, projeto[i].gerenteS);
 			switch (projeto[i].status){
 			case 1 :
 				printf("Status: a fazer\n");
@@ -96,17 +91,23 @@ void pesquisarProjeto(){
 			}
 			i++;
 		}
-		printf("Deseja pesquisar mais um projeto? 's'- sim 'n'- nao ");
+		printf("\nDeseja pesquisar mais um projeto? 's'- sim 'n'- nao ");
 		scanf(" %c", &op);	
 	}while (op == 's' && i <= 200);
 } 
 
-void listarTodos(){
+void listarTodos(struct Projetos projeto[], size_t len){
 	int i = 1;
-	char op = 's';
-	printf("Listagem de Projetos\n");
+	printf("\nListagem de Projetos\n");
 	do {
-		imprimirInfos();
+		printf("\nCodigo: %d\n", projeto[i].codigo);
+		printf("Titulo: %s\n", projeto[i].titulo);
+		printf("Palavras-chave: %s\n", projeto[i].chave);
+		printf("Descricao: %s\n", projeto[i].desc);
+		printf("Autores: %s\n", projeto[i].autores);
+		printf("Instituicao: %s\n", projeto[i].inst);
+		printf("Ano: %d\n", &projeto[i].ano);
+		printf("Gerente Responsavel: %s%s\n", projeto[i].gerenteN, projeto[i].gerenteS);
 		switch (projeto[i].status){
 			case 1 :
 				printf("Status: a fazer\n");
@@ -122,50 +123,69 @@ void listarTodos(){
 	}while (i <= 200);
 } 
 		
-void listarAfazer(){
+void listarAfazer(struct Projetos projeto[], size_t len){
 	int i = 1;
-	char op = 's';
-	printf("Listagem de Projetos a fazer\n");
+	printf("\nListagem de Projetos a fazer\n");
 	do {
 		if (projeto[i].status == 1){
-			imprimirInfos();
+			printf("\nCodigo: %d\n", projeto[i].codigo);
+			printf("Titulo: %s\n", projeto[i].titulo);
+			printf("Palavras-chave: %s\n", projeto[i].chave);
+			printf("Descricao: %s\n", projeto[i].desc);
+			printf("Autores: %s\n", projeto[i].autores);
+			printf("Instituicao: %s\n", projeto[i].inst);
+			printf("Ano: %d\n", &projeto[i].ano);
+			printf("Gerente Responsavel: %s%s\n", projeto[i].gerenteN, projeto[i].gerenteS);
 			printf("Status: a fazer\n");
 		}
 		i++;
 	}while (i <= 200);
 } 
 
-void listarEmcurso(){
+void listarEmcurso(struct Projetos projeto[], size_t len){
 	int i = 1;
-	char op = 's';
-	printf("Listagem de Projetos a fazer\n");
+	printf("\nListagem de Projetos em curso\n");
 	do {
 		if (projeto[i].status == 2){
-			imprimirInfos();
+			printf("\nCodigo: %d\n", projeto[i].codigo);
+			printf("Titulo: %s\n", projeto[i].titulo);
+			printf("Palavras-chave: %s\n", projeto[i].chave);
+			printf("Descricao: %s\n", projeto[i].desc);
+			printf("Autores: %s\n", projeto[i].autores);
+			printf("Instituicao: %s\n", projeto[i].inst);
+			printf("Ano: %d\n", &projeto[i].ano);
+			printf("Gerente Responsavel: %s%s\n", projeto[i].gerenteN, projeto[i].gerenteS);
 			printf("Status: em curso\n");
 		}
 		i++;
 	}while (i <= 200);
 } 
 
-void listarFinalizado(){
+void listarFinalizado(struct Projetos projeto[], size_t len){
 	int i = 1;
-	char op = 's';
-	printf("Listagem de Projetos a fazer\n");
+	printf("\nListagem de Projetos finalizados\n");
 	do {
 		if (projeto[i].status == 3){
-			imprimirInfos();
+			printf("\nCodigo: %d\n", projeto[i].codigo);
+			printf("Titulo: %s\n", projeto[i].titulo);
+			printf("Palavras-chave: %s\n", projeto[i].chave);
+			printf("Descricao: %s\n", projeto[i].desc);
+			printf("Autores: %s\n", projeto[i].autores);
+			printf("Instituicao: %s\n", projeto[i].inst);
+			printf("Ano: %d\n", &projeto[i].ano);
+			printf("Gerente Responsavel: %s%s\n", projeto[i].gerenteN, projeto[i].gerenteS);
 			printf("Status: finalizado\n");
 		}
 		i++;
 	}while (i <= 200);
+}
 
-
-int main(){
-	struct Projetos projeto[200];
-	int option1 = 0, option2 = 's';
+void main(){
+	struct Projetos proj[200];
+	int i, option1 = 0;
+	char option2 = 's'; 
 	printf("Projetos\n");
-	while (option1 != 8 && option2 == 's'){
+	while (option1 != 7 && option2 == 's'){
 		printf("\nDigite 1 se deseja cadastrar um Projeto\n");
 		printf("Digite 2 se deseja pesquisar um Projeto via codigo\n");
 		printf("Se deseja abrir uma listagem de projetos, digite:\n");
@@ -173,35 +193,35 @@ int main(){
 		printf(" 4 - para projetos a fazer\n");
 		printf(" 5 - para projetos em curso \n");
 		printf(" 6 - para projetos finalizados\n");
-        printf("Digite 8 para sair\n");
+        printf("Digite 7 para sair\n");
 		scanf("%d", &option1);
-		if (option1 != 8){
+		if (option1 != 7){
 			switch (option1){
 				case 1 :
-					cadastrar();
+					cadastrar(proj, sizeof(proj));
 					break;
 				case 2 :
-					pesquisarProjeto();
+					pesquisarProjeto(proj, sizeof(proj));
 					break;
 				case 3 :
-					listarTodos();
+					listarTodos(proj, sizeof(proj));
 					break;
 				case 4 :
-					listarAfazer();
-					break;
+					listarAfazer(proj, sizeof(proj));
 				case 5 :
-					listarEmcurso();
+					listarEmcurso(proj, sizeof(proj));
 					break;
 				case 6 :
-					listarFinalizado();
+					listarFinalizado(proj, sizeof(proj));
 					break;
 				default :
 					printf("Invalido!");
 			}
-		}
-		printf("\nDeseja escolher outra opcao? 's'- sim 'n'- nao ");
-		scanf(" %c", &option2);	
+		} 
+		printf("\nDeseja escolher outra opcao? 's'- sim 'n'- nao \n");
+		scanf(" %c", &option2);
 	}
-	return 0;
 }
+
+
 
